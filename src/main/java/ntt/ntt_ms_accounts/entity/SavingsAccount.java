@@ -1,0 +1,14 @@
+package ntt.ntt_ms_accounts.entity;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+public class SavingsAccount extends BankAccount{
+    //Cuenta Ahorro
+    private final int TRANSACTION_LIMIT = 30;  // LIMITE_MOVIMIENTOS
+    // sin comisión
+}
