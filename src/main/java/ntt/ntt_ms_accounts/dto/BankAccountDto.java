@@ -1,4 +1,4 @@
-package ntt.ntt_ms_accounts.entity;
+package ntt.ntt_ms_accounts.dto;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -7,8 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import ntt.ntt_ms_accounts.enums.AccountType;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -17,17 +15,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
         visible = true
 )
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = SavingsAccount.class, name = "SAVINGS"),
-        @JsonSubTypes.Type(value = CurrentAccount.class, name = "CURRENT"),
-        @JsonSubTypes.Type(value = FixedTermAccount.class, name = "FIXED_TERM")
+        @JsonSubTypes.Type(value = SavingsAccountResponseDto.class, name = "SAVINGS"),
+        @JsonSubTypes.Type(value = CurrentAccountResponseDto.class, name = "CURRENT"),
+        @JsonSubTypes.Type(value = FixedTermAccountResponseDto.class, name = "FIXED_TERM")
 })
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-@Document(collection = "accounts")
-public class BankAccount {//cuenta bancaria
-    @Id
+public class BankAccountDto {
     private String id;
     // Relación con el cliente
     private String customerId;
