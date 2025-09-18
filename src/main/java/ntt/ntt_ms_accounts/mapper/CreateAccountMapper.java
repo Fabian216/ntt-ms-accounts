@@ -1,5 +1,7 @@
 package ntt.ntt_ms_accounts.mapper;
 
+import ntt.ntt_ms_accounts.business.MaintenanceFee;
+import ntt.ntt_ms_accounts.business.TransactionLimit;
 import ntt.ntt_ms_accounts.dto.BankAccountRequestDto;
 import ntt.ntt_ms_accounts.entity.BankAccount;
 import ntt.ntt_ms_accounts.entity.CurrentAccount;
@@ -18,8 +20,9 @@ public class CreateAccountMapper {
                         .accountType(request.getAccountType())
                         .accountNumber(request.getAccountNumber())
                         .balance(request.getBalance())
-                        .maintenanceFee(0)
+                        .maintenanceFee(MaintenanceFee.savings())
                         .monthlyTransactions(0)
+                        .transactionLimit(TransactionLimit.savings())
                         .build();
             case CURRENT:
                 return CurrentAccount.builder()
@@ -27,7 +30,7 @@ public class CreateAccountMapper {
                         .accountType(request.getAccountType())
                         .accountNumber(request.getAccountNumber())
                         .balance(request.getBalance())
-                        .maintenanceFee(8.0)
+                        .maintenanceFee(MaintenanceFee.current())
                         .monthlyTransactions(0)
                         .build();
             case FIXED_TERM:
@@ -36,7 +39,7 @@ public class CreateAccountMapper {
                         .accountType(request.getAccountType())
                         .accountNumber(request.getAccountNumber())
                         .balance(request.getBalance())
-                        .maintenanceFee(0)
+                        .maintenanceFee(MaintenanceFee.fixedTerm())
                         .monthlyTransactions(0)
                         .allowedTransactionDay(1)
                         .build();

@@ -8,5 +8,5 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @EqualsAndHashCode(callSuper = true)
 public class SavingsAccountResponseDto extends BankAccountDto{
-    private final int TRANSACTION_LIMIT = 30;
+    private int transactionLimit;
 }

@@ -2,7 +2,6 @@ package ntt.ntt_ms_accounts.service;
 
 import ntt.ntt_ms_accounts.dto.BankAccountDto;
 import ntt.ntt_ms_accounts.dto.BankAccountRequestDto;
-import ntt.ntt_ms_accounts.entity.BankAccount;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

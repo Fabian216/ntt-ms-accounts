@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ListAccountMapper {
 
-    public BankAccountDto toList(BankAccount bankAccount) {
+    public BankAccountDto toResponseDto(BankAccount bankAccount) {
         if (bankAccount instanceof SavingsAccount) {
             SavingsAccount s = (SavingsAccount) bankAccount;
             return SavingsAccountResponseDto.builder()
@@ -24,6 +24,7 @@ public class ListAccountMapper {
                     .balance(s.getBalance())
                     .maintenanceFee(s.getMaintenanceFee())
                     .monthlyTransactions(s.getMonthlyTransactions())
+                    .transactionLimit(s.getTransactionLimit())
                     .build();
         } else if (bankAccount instanceof CurrentAccount) {
             CurrentAccount c = (CurrentAccount) bankAccount;

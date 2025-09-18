@@ -63,7 +63,7 @@
         </dependency>
 	</dependencies>
 
-    <!-- cliente config server-->
+    <!-- spring cloud -->
     <dependencyManagement>
         <dependencies>
             <dependency>

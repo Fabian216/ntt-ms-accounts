@@ -10,6 +10,8 @@ import ntt.ntt_ms_accounts.enums.AccountType;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigDecimal;
+
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.EXISTING_PROPERTY,
@@ -34,7 +36,7 @@ public class BankAccount {//cuenta bancaria
     // Tipo de cuenta
     private AccountType accountType; // "SAVINGS", "CURRENT", "FIXED_TERM"
     private String accountNumber;           // númeroCuenta
-    private double balance;                 // saldo
-    private double maintenanceFee;          // comisionMantenimiento
+    private BigDecimal balance;                 // saldo
+    private BigDecimal maintenanceFee;          // comisionMantenimiento
     private int monthlyTransactions;        // movimientosRealizados
 }

@@ -2,11 +2,11 @@ package ntt.ntt_ms_accounts.dto;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import ntt.ntt_ms_accounts.enums.AccountType;
+
+import java.math.BigDecimal;
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -30,7 +30,7 @@ public class BankAccountDto {
     // Tipo de cuenta
     private AccountType accountType; // "SAVINGS", "CURRENT", "FIXED_TERM"
     private String accountNumber;           // númeroCuenta
-    private double balance;                 // saldo
-    private double maintenanceFee;          // comisionMantenimiento
+    private BigDecimal balance;                 // saldo
+    private BigDecimal maintenanceFee;          // comisionMantenimiento
     private int monthlyTransactions;        // movimientosRealizados
 }

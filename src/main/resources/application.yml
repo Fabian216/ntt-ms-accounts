@@ -6,7 +6,7 @@ spring:
       uri: mongodb://localhost:27017/bank
 
 server:
-  port: 8084
+  port: 8082
 
 eureka:
   instance:
