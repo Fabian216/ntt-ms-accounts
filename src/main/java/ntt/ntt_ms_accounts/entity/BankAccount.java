@@ -34,9 +34,10 @@ public class BankAccount {//cuenta bancaria
     // Relación con el cliente
     private String customerId;
     // Tipo de cuenta
-    private AccountType accountType; // "SAVINGS", "CURRENT", "FIXED_TERM"
-    private String accountNumber;           // númeroCuenta
-    private BigDecimal balance;                 // saldo
-    private BigDecimal maintenanceFee;          // comisionMantenimiento
-    private int monthlyTransactions;        // movimientosRealizados
+    private AccountType accountType;       // "SAVINGS", "CURRENT", "FIXED_TERM"
+    private String accountNumber;          // númeroCuenta
+    private BigDecimal balance;            // saldo
+    private BigDecimal maintenanceFee;     // comisionMantenimiento
+    private int transactionLimit;          // limite de trasacciones
+    private int monthlyTransactions;       // movimientosRealizados
 }

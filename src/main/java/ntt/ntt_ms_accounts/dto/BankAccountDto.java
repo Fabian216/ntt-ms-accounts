@@ -28,9 +28,10 @@ public class BankAccountDto {
     // Relación con el cliente
     private String customerId;
     // Tipo de cuenta
-    private AccountType accountType; // "SAVINGS", "CURRENT", "FIXED_TERM"
+    private AccountType accountType;        // "SAVINGS", "CURRENT", "FIXED_TERM"
     private String accountNumber;           // númeroCuenta
-    private BigDecimal balance;                 // saldo
-    private BigDecimal maintenanceFee;          // comisionMantenimiento
+    private BigDecimal balance;             // saldo
+    private BigDecimal maintenanceFee;      // comisionMantenimiento
+    private int transactionLimit;           //Limite de transacciones
     private int monthlyTransactions;        // movimientosRealizados
 }

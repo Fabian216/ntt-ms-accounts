@@ -9,6 +9,6 @@ import java.math.BigDecimal;
 public class BankAccountRequestDto {
     private String customerId;
     private AccountType accountType; // "SAVINGS", "CURRENT", "FIXED_TERM"
-    private String accountNumber;           // númeroCuenta
-    private BigDecimal balance;                 // saldo
+    private String accountNumber;    // númeroCuenta
+    private BigDecimal balance;      // saldo
 }

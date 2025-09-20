@@ -11,6 +11,6 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public class SavingsAccount extends BankAccount{
     //Cuenta Ahorro
-    private int transactionLimit;  // LIMITE_MOVIMIENTOS
+    //private int transactionLimit;  // limite de transaction
     // sin comisión
 }

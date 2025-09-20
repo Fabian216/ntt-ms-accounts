@@ -15,7 +15,7 @@ public class CustomerClient {
     public Mono<CustomerResponseDto> getCustomerById(String id) {
         return webClientBuilder.build()
                 .get()
-                .uri("lb://ntt-ms-api-gateway/customers/personal/{id}", id)
+                .uri("lb://ntt-ms-api-gateway/customers/{id}", id)
                 .retrieve()
                 .bodyToMono(CustomerResponseDto.class);
     }

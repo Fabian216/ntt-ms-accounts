@@ -23,8 +23,8 @@ public class ListAccountMapper {
                     .accountNumber(s.getAccountNumber())
                     .balance(s.getBalance())
                     .maintenanceFee(s.getMaintenanceFee())
-                    .monthlyTransactions(s.getMonthlyTransactions())
                     .transactionLimit(s.getTransactionLimit())
+                    .monthlyTransactions(s.getMonthlyTransactions())
                     .build();
         } else if (bankAccount instanceof CurrentAccount) {
             CurrentAccount c = (CurrentAccount) bankAccount;
@@ -35,6 +35,7 @@ public class ListAccountMapper {
                     .accountNumber(c.getAccountNumber())
                     .balance(c.getBalance())
                     .maintenanceFee(c.getMaintenanceFee())
+                    .transactionLimit(c.getTransactionLimit())
                     .monthlyTransactions(c.getMonthlyTransactions())
                     .build();
         } else if (bankAccount instanceof FixedTermAccount) {
@@ -46,6 +47,7 @@ public class ListAccountMapper {
                     .accountNumber(f.getAccountNumber())
                     .balance(f.getBalance())
                     .maintenanceFee(f.getMaintenanceFee())
+                    .transactionLimit(f.getTransactionLimit())
                     .monthlyTransactions(f.getMonthlyTransactions())
                     .allowedTransactionDay(f.getAllowedTransactionDay())
                     .build();

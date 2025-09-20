@@ -33,7 +33,7 @@ public class AccountValidator {
                 if (newAccount.getAccountType().equals(AccountType.SAVINGS)) {
                     throw new IllegalArgumentException("El cliente empresarial no puede tener cuentas de ahorro");
                 }
-                //restringir creacion de cuenta corriente
+                //restringir creacion de cuenta plazo fijo
                 if (newAccount.getAccountType().equals(AccountType.FIXED_TERM)) {
                     throw new IllegalArgumentException("El cliente empresarial no puede tener cuentas a plazo fijo");
                 }

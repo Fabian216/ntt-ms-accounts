@@ -21,8 +21,8 @@ public class CreateAccountMapper {
                         .accountNumber(request.getAccountNumber())
                         .balance(request.getBalance())
                         .maintenanceFee(MaintenanceFee.savings())
-                        .monthlyTransactions(0)
                         .transactionLimit(TransactionLimit.savings())
+                        .monthlyTransactions(0)
                         .build();
             case CURRENT:
                 return CurrentAccount.builder()
@@ -31,6 +31,7 @@ public class CreateAccountMapper {
                         .accountNumber(request.getAccountNumber())
                         .balance(request.getBalance())
                         .maintenanceFee(MaintenanceFee.current())
+                        .transactionLimit(TransactionLimit.current())
                         .monthlyTransactions(0)
                         .build();
             case FIXED_TERM:
@@ -40,6 +41,7 @@ public class CreateAccountMapper {
                         .accountNumber(request.getAccountNumber())
                         .balance(request.getBalance())
                         .maintenanceFee(MaintenanceFee.fixedTerm())
+                        .transactionLimit(TransactionLimit.fixedTerm())
                         .monthlyTransactions(0)
                         .allowedTransactionDay(1)
                         .build();
