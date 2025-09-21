@@ -1,7 +1,5 @@
 package ntt.ntt_ms_accounts.mapper;
 
-import ntt.ntt_ms_accounts.business.MaintenanceFee;
-import ntt.ntt_ms_accounts.business.TransactionLimit;
 import ntt.ntt_ms_accounts.dto.BankAccountRequestDto;
 import ntt.ntt_ms_accounts.entity.BankAccount;
 import ntt.ntt_ms_accounts.entity.CurrentAccount;
@@ -13,6 +11,7 @@ import org.springframework.stereotype.Component;
 public class CreateAccountMapper {
 
     public BankAccount toEntity(BankAccountRequestDto request) {
+
         switch (request.getAccountType()) {
             case SAVINGS:
                 return SavingsAccount.builder()
@@ -20,9 +19,6 @@ public class CreateAccountMapper {
                         .accountType(request.getAccountType())
                         .accountNumber(request.getAccountNumber())
                         .balance(request.getBalance())
-                        .maintenanceFee(MaintenanceFee.savings())
-                        .transactionLimit(TransactionLimit.savings())
-                        .monthlyTransactions(0)
                         .build();
             case CURRENT:
                 return CurrentAccount.builder()
@@ -30,9 +26,6 @@ public class CreateAccountMapper {
                         .accountType(request.getAccountType())
                         .accountNumber(request.getAccountNumber())
                         .balance(request.getBalance())
-                        .maintenanceFee(MaintenanceFee.current())
-                        .transactionLimit(TransactionLimit.current())
-                        .monthlyTransactions(0)
                         .build();
             case FIXED_TERM:
                 return FixedTermAccount.builder()
@@ -40,10 +33,7 @@ public class CreateAccountMapper {
                         .accountType(request.getAccountType())
                         .accountNumber(request.getAccountNumber())
                         .balance(request.getBalance())
-                        .maintenanceFee(MaintenanceFee.fixedTerm())
-                        .transactionLimit(TransactionLimit.fixedTerm())
-                        .monthlyTransactions(0)
-                        .allowedTransactionDay(1)
+                        .fixedDayAllowed(request.getFixedDayAllowed())
                         .build();
             default:
                 throw new IllegalArgumentException("Tipo de cuenta no soportado: " + request.getAccountType());
