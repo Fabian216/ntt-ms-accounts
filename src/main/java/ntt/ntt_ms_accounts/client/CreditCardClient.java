@@ -17,7 +17,8 @@ public class CreditCardClient {
         return webClientBuilder.build()
                 .get().uri("lb://ntt-ms-api-gateway/creditCards/customer/{id}",id)
                 .retrieve()
-                .bodyToMono(CreditCardDto.class);
+                .bodyToFlux(CreditCardDto.class)
+                .next();
     }
 
 
