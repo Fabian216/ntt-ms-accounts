@@ -1,5 +1,6 @@
 package ntt.ntt_ms_accounts.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
@@ -20,6 +21,8 @@ import java.util.List;
         @JsonSubTypes.Type(value = CurrentAccountResponseDto.class, name = "CURRENT"),
         @JsonSubTypes.Type(value = FixedTermAccountResponseDto.class, name = "FIXED_TERM")
 })
+
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,8 +36,8 @@ public class BankAccountDto {
     private String accountNumber;           // númeroCuenta
     private BigDecimal balance;             // saldo
     private BigDecimal maintenanceFee;      // comisionMantenimiento
-    private int transactionLimit;           //Limite de transacciones
-    private int monthlyTransactions;        // movimientosRealizados
+    private Integer  transactionLimit;           //Limite de transacciones
+    private Integer  monthlyTransactions;        // movimientosRealizados
     private BigDecimal requiredAvgDailyBalance; // monto minimo promedio diario requerido
     private Integer fixedDayAllowed;
     private List<String> holderDocuments;

@@ -15,9 +15,11 @@ public class CreditCardClient {
 
     public Mono<CreditCardDto> getCreditCardByCustomerId(String id) {
         return webClientBuilder.build()
-                .get().uri("lb://ntt-ms-api-gateway/credits/{id}",id)
+                .get().uri("lb://ntt-ms-api-gateway/creditCards/customer/{id}",id)
                 .retrieve()
                 .bodyToMono(CreditCardDto.class);
     }
+
+
 
 }

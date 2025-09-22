@@ -13,6 +13,6 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper = true)
 public class FixedTermAccount extends BankAccount{
     //CuentaPlazoFijo
-    private int allowedTransactionDay;        // diaPermitidoMovimiento
+    private Integer  allowedTransactionDay;        // diaPermitidoMovimiento/
     // sin comisión
 }

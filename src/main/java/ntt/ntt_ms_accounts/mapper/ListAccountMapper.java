@@ -25,6 +25,7 @@ public class ListAccountMapper {
                     .maintenanceFee(s.getMaintenanceFee())
                     .transactionLimit(s.getTransactionLimit())
                     .monthlyTransactions(s.getMonthlyTransactions())
+                    .requiredAvgDailyBalance(s.getRequiredAvgDailyBalance())
                     .build();
         } else if (bankAccount instanceof CurrentAccount) {
             CurrentAccount c = (CurrentAccount) bankAccount;

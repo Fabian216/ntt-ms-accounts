@@ -11,5 +11,6 @@ public class BankAccountRequestDto {
     private AccountType accountType; // "SAVINGS", "CURRENT", "FIXED_TERM"
     private String accountNumber;    // númeroCuenta
     private BigDecimal balance;      // saldo
-    private Integer fixedDayAllowed;
+    private Integer allowedTransactionDay;
+    private BigDecimal requiredAvgDailyBalance;//dia permitido para retirar
 }

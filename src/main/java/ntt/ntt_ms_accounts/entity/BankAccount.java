@@ -9,8 +9,6 @@ import lombok.experimental.SuperBuilder;
 import ntt.ntt_ms_accounts.enums.AccountType;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.util.List;
-import java.util.ArrayList;
 
 import java.math.BigDecimal;
 
@@ -40,9 +38,7 @@ public class BankAccount {//cuenta bancaria
     private String accountNumber;          // númeroCuenta
     private BigDecimal balance;            // saldo
     private BigDecimal maintenanceFee;     // comisionMantenimiento
-    private int transactionLimit;          // limite de trasacciones
-    private int monthlyTransactions;       // movimientos Realizados
-    private BigDecimal requiredAvgDailyBalance;// monto minimo promedio diario requerido
-    private Integer fixedDayAllowed; // Dia del mes en que se permiten operaciones en una cuenta en plazo fijo
+    private Integer  transactionLimit;          // limite de trasacciones
+    private Integer  monthlyTransactions;       // movimientos Realizados
 
 }

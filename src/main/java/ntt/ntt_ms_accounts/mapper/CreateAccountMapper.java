@@ -19,6 +19,7 @@ public class CreateAccountMapper {
                         .accountType(request.getAccountType())
                         .accountNumber(request.getAccountNumber())
                         .balance(request.getBalance())
+                        .requiredAvgDailyBalance(request.getRequiredAvgDailyBalance())
                         .build();
             case CURRENT:
                 return CurrentAccount.builder()
@@ -33,7 +34,7 @@ public class CreateAccountMapper {
                         .accountType(request.getAccountType())
                         .accountNumber(request.getAccountNumber())
                         .balance(request.getBalance())
-                        .fixedDayAllowed(request.getFixedDayAllowed())
+                        .allowedTransactionDay(request.getAllowedTransactionDay())
                         .build();
             default:
                 throw new IllegalArgumentException("Tipo de cuenta no soportado: " + request.getAccountType());

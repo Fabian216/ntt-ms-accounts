@@ -2,6 +2,8 @@ package ntt.ntt_ms_accounts.validation;
 
 import ntt.ntt_ms_accounts.dto.CustomerResponseDto;
 import ntt.ntt_ms_accounts.entity.BankAccount;
+import ntt.ntt_ms_accounts.entity.FixedTermAccount;
+import ntt.ntt_ms_accounts.entity.SavingsAccount;
 import ntt.ntt_ms_accounts.enums.AccountType;
 import ntt.ntt_ms_accounts.enums.CustomerType;
 import ntt.ntt_ms_accounts.enums.CustomerSubType;
@@ -38,12 +40,21 @@ public class AccountValidator {
             throw new IllegalArgumentException("El saldo no puede ser negativo");
         }
 
-
-
         CustomerType customerType = customerResponseDto.getType();
-        AccountType  accountType  = newAccount.getAccountType();
+        AccountType accountType = newAccount.getAccountType();
 
-        switch (customerType) {
+        if (newAccount.getAccountType() == AccountType.FIXED_TERM) {
+            if (!(newAccount instanceof FixedTermAccount)) {
+                throw new IllegalArgumentException("Se esperaba FixedTermAccount para FIXED_TERM");
+            }
+            FixedTermAccount f = (FixedTermAccount) newAccount;
+
+            Integer day = f.getAllowedTransactionDay();
+            if (day == null) {
+                throw new IllegalArgumentException("allowedTransactionDay es obligatorio para cuentas a plazo fijo");
+            }}
+
+            switch (customerType) {
             case PERSONAL:
                 //valida si existe cuenta ahorros
                 if (accountType.equals(AccountType.SAVINGS) &&
@@ -57,15 +68,19 @@ public class AccountValidator {
                     throw new IllegalArgumentException("El cliente personal ya tiene una cuenta corriente");
                 }
 
-                if (customerResponseDto.getSubType() == CustomerSubType.VIP){
-                    BigDecimal req = newAccount.getRequiredAvgDailyBalance();
-                    if (req == null ||  req.compareTo(BigDecimal.ZERO) <= 0) {
-                        throw new IllegalArgumentException("Para clientes VIP, el promedio diario requerido no puede ser cero");
+                if (customerResponseDto.getSubType() == CustomerSubType.VIP) {
+
+                    if (newAccount instanceof SavingsAccount) {
+                        SavingsAccount s = (SavingsAccount) newAccount;
+                        BigDecimal req = s.getRequiredAvgDailyBalance();
+                        if (req == null || req.compareTo(BigDecimal.ZERO) <= 0) {
+                            throw new IllegalArgumentException("Para clientes VIP, el promedio diario requerido no puede ser cero");
+                        }
                     }
 
                 }
 
-            break;
+                break;
 
             case BUSINESS:
 
@@ -84,14 +99,6 @@ public class AccountValidator {
 
             default:
                 throw new IllegalArgumentException("Tipo de cliente no soportado: " + customerResponseDto.getType());
-        }
-
-        if (accountType == AccountType.FIXED_TERM) {
-            Integer day = newAccount.getFixedDayAllowed();
-            if (day != null && (day < 1 || day > 31)) {
-                throw new IllegalArgumentException("El día permitido para transacciones debe estar entre 1 y 31");
-            }
-
         }
 
     }
