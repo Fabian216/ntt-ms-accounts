@@ -20,7 +20,4 @@ public class CreditCardClient {
                 .bodyToFlux(CreditCardDto.class)
                 .next();
     }
-
-
-
 }

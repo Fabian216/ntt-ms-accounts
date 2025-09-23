@@ -9,6 +9,7 @@ import lombok.experimental.SuperBuilder;
 import ntt.ntt_ms_accounts.enums.AccountType;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 import java.math.BigDecimal;
 
@@ -19,9 +20,9 @@ import java.math.BigDecimal;
         visible = true
 )
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = SavingsAccount.class, name = "SAVINGS"),
-        @JsonSubTypes.Type(value = CurrentAccount.class, name = "CURRENT"),
-        @JsonSubTypes.Type(value = FixedTermAccount.class, name = "FIXED_TERM")
+    @JsonSubTypes.Type(value = SavingsAccount.class, name = "SAVINGS"),
+    @JsonSubTypes.Type(value = CurrentAccount.class, name = "CURRENT"),
+    @JsonSubTypes.Type(value = FixedTermAccount.class, name = "FIXED_TERM")
 })
 @Data
 @NoArgsConstructor
@@ -35,10 +36,10 @@ public class BankAccount {//cuenta bancaria
     private String customerId;
     // Tipo de cuenta
     private AccountType accountType;       // "SAVINGS", "CURRENT", "FIXED_TERM"
+    @Indexed(unique = true)
     private String accountNumber;          // númeroCuenta
     private BigDecimal balance;            // saldo
     private BigDecimal maintenanceFee;     // comisionMantenimiento
     private Integer  transactionLimit;          // limite de trasacciones
-    private Integer  monthlyTransactions;       // movimientos Realizados
 
 }

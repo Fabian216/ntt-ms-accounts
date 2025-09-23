@@ -3,7 +3,9 @@ package ntt.ntt_ms_accounts.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import ntt.ntt_ms_accounts.enums.AccountType;
 
@@ -17,9 +19,9 @@ import java.util.List;
         visible = true
 )
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = SavingsAccountResponseDto.class, name = "SAVINGS"),
-        @JsonSubTypes.Type(value = CurrentAccountResponseDto.class, name = "CURRENT"),
-        @JsonSubTypes.Type(value = FixedTermAccountResponseDto.class, name = "FIXED_TERM")
+    @JsonSubTypes.Type(value = SavingsAccountResponseDto.class, name = "SAVINGS"),
+    @JsonSubTypes.Type(value = CurrentAccountResponseDto.class, name = "CURRENT"),
+    @JsonSubTypes.Type(value = FixedTermAccountResponseDto.class, name = "FIXED_TERM")
 })
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -37,9 +39,7 @@ public class BankAccountDto {
     private BigDecimal balance;             // saldo
     private BigDecimal maintenanceFee;      // comisionMantenimiento
     private Integer  transactionLimit;           //Limite de transacciones
-    private Integer  monthlyTransactions;        // movimientosRealizados
-    private BigDecimal requiredAvgDailyBalance; // monto minimo promedio diario requerido
-    private Integer fixedDayAllowed;
     private List<String> holderDocuments;
     private List<String> signerDocuments;
+
 }
